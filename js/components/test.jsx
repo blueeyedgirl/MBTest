@@ -8,16 +8,21 @@ export default class Test extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            prevQuestion: null,
             currentQuestion: 0,
+            nextQuestion: 1,
             isPrevClicked: false
         }
     }
     handleNextChange = currentQuestion => {
         this.setState({currentQuestion});
-        console.log(currentQuestion);
+        console.log("curr ", currentQuestion);
         let newNext = Number(currentQuestion) + 1;
         this.setState({nextQuestion: newNext});
-        console.log(newNext);
+        console.log("next ", newNext);
+        let newPrev = Number(currentQuestion) - 1;
+        this.setState({nextQuestion: newPrev});
+        console.log("prev ", newPrev);
     }
     render() {
         return  <div className="test">

@@ -5,29 +5,35 @@ export default class TestProgressBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            trs: null
+            tds: [<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,
+                    <td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,
+                    <td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,<td/>,
+                    <td/>,<td/>,<td/>,<td/>,<td/>,<td/>]
         }
     }
-    refreshStatus = (p) => {
-        let trArray = [];
-        for (let i=0; i<p.db.length; i++) {
-            if (i < p.currentQuestion) {
-                trArray.push( <td className="filled"></td> )
+    refreshStatus = (nextProps) => {
+        let tdArray = [];
+        for (let i=0; i<this.props.db.length; i++) {
+            if (i < nextProps.currentQuestion) {
+                tdArray.push( <td className="filled"></td> )
             }
             else (
-                trArray.push( <td></td> )
+                tdArray.push( <td></td> )
             )
         };
-        this.setState({trs: trArray})
+        this.setState({tds: tdArray})
     }
     componentWillReceiveProps(nextProps) {
         this.refreshStatus(nextProps);
     }
+    // componentDidMount() {
+    //     this.refreshStatus();
+    // }
     render() {
         return  <table className="progress-bar">
                     <tbody>
                         <tr>
-                            {this.state.trs}
+                            {this.state.tds}
                         </tr>
                     </tbody>
                 </table>;

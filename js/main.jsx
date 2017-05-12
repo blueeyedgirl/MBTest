@@ -49,6 +49,7 @@ class App extends React.Component {
     }
     componentDidMount() {
         this.refreshDB();
+        // this.handleStartChange();
         //event listeners on main nav buttons
         let menuHome = document.querySelector(".colour-1");
         let menuAbout = document.querySelector(".colour-2");
@@ -78,37 +79,38 @@ class App extends React.Component {
         //     this.setState({db: databaseContent});
         //     // console.log(databaseContent);
         // });
-
-
+    }
+    handleStartChange = () => {
+        this.setState({toDisplay: "test"});
     }
     render() {
         if (this.state.toDisplay == "main") {
-            return  <div>
+            return  <div className="width">
                         <MainWelcome/>
                         <MainAbout/>
-                        <MainNav/>
+                        <MainNav onStartChange={this.handleStartChange}/>
                     </div>;
         }
         else if (this.state.toDisplay == "about") {
-            return  <div>
+            return  <div className="width">
                         oooooooo
                     </div>;
         }
         else if (this.state.toDisplay == "test") {
             if ( !this.state.db ){
-                return <div>bez bazy</div>;
+                return null;
             }
-            return  <div>
+            return  <div className="width">
                         <Test db={this.state.db}/>
                     </div>;
         }
         else if (this.state.toDisplay == "types") {
-            return  <div>
+            return  <div className="width">
                         tyt
                     </div>;
         }
         else if (this.state.toDisplay == "stats") {
-            return  <div>
+            return  <div className="width">
                         statatatat
                     </div>;
         }
