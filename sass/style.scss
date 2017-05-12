@@ -4,6 +4,10 @@
     font-family: 'Lato', sans-serif;
 }
 
+.font-2 {
+    font-family: 'Clicker Script', sans-serif;
+    font-size: 300%;
+}
 
 /* ************************* body flex ************************** */
 body.flex {
@@ -66,11 +70,12 @@ body.flex {
                 table.progress-bar {
                     padding: 0;
                     width: 100%;
+                    border-collapse: collapse;
                     tr {
                         td {
-                            height: 10px;
+                            height: 5px;
                             background-color: lighten(#60AFAC, 30%);
-                            .filled {
+                            &.filled {
                                 background-color: darken(#60AFAC, 20%);
                             }
                         }

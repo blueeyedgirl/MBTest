@@ -1,6 +1,10 @@
 * {
   font-family: 'Lato', sans-serif; }
 
+.font-2 {
+  font-family: 'Clicker Script', sans-serif;
+  font-size: 300%; }
+
 /* ************************* body flex ************************** */
 body.flex {
   height: 100vh;
@@ -54,11 +58,12 @@ body.flex {
         padding-right: inherit; }
         body.flex main#app div div.test table.progress-bar {
           padding: 0;
-          width: 100%; }
+          width: 100%;
+          border-collapse: collapse; }
           body.flex main#app div div.test table.progress-bar tr td {
-            height: 10px;
+            height: 5px;
             background-color: #c6e2e1; }
-            body.flex main#app div div.test table.progress-bar tr td .filled {
+            body.flex main#app div div.test table.progress-bar tr td.filled {
               background-color: #39706e; }
         body.flex main#app div div.test div.qa {
           width: 100%;

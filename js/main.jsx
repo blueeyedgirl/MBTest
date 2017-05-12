@@ -5,6 +5,7 @@ import MainAbout from './components/mainAbout.jsx';
 import MainNav from './components/mainNav.jsx';
 import MainWelcome from './components/mainWelcome.jsx';
 import Test from './components/test.jsx';
+import About from './components/about.jsx';
 
 
 require('../sass/style.scss');
@@ -93,7 +94,7 @@ class App extends React.Component {
         }
         else if (this.state.toDisplay == "about") {
             return  <div className="width">
-                        oooooooo
+                        <About/>
                     </div>;
         }
         else if (this.state.toDisplay == "test") {
