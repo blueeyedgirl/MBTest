@@ -11,6 +11,7 @@ body.flex {
   flex-direction: column;
   align-content: space-between; }
   body.flex header {
+    height: 15vh;
     margin: 0;
     padding: 0;
     background-color: #F3F3F3; }
@@ -25,7 +26,7 @@ body.flex {
     display: flex;
     align-items: center;
     justify-content: center;
-    display: flex;
+    height: 80vh;
     width: 100%;
     background-color: #F3F3F3; }
     body.flex main#app div {
@@ -33,21 +34,41 @@ body.flex {
       flex-direction: column;
       align-items: center;
       justify-content: center; }
+      body.flex main#app div div.test {
+        width: 60vw; }
+        body.flex main#app div div.test table.progress-bar {
+          padding: 0;
+          width: 100%; }
+          body.flex main#app div div.test table.progress-bar tr td {
+            height: 10px;
+            background-color: #c6e2e1; }
+            body.flex main#app div div.test table.progress-bar tr td .filled {
+              background-color: #39706e; }
+        body.flex main#app div div.test div.qa {
+          width: 100%;
+          padding-top: 40px; }
+        body.flex main#app div div.test div.testNav {
+          width: 100%;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          flex-direction: row;
+          padding-top: 40px; }
+          body.flex main#app div div.test div.testNav .button {
+            display: flex;
+            padding: 10px 20px;
+            border: none; }
+            body.flex main#app div div.test div.testNav .button.prev {
+              align-self: flex-start; }
+            body.flex main#app div div.test div.testNav .button.next {
+              align-self: flex-end; }
   body.flex footer {
-    height: 40px;
+    height: 5vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: grey; }
 
 /* ****************** progress bar ******************* */
-.progress-bar {
-  padding: 0; }
-  .progress-bar tr td {
-    width: 50px;
-    height: 10px;
-    background-color: red; }
-
 /* ************************** nav styles ****************************** */
 #pl {
   padding-right: 10px; }
@@ -70,12 +91,12 @@ nav.tile-nav a {
   transition: background 0.3s, transform 0.3s; }
 
 nav.tile-nav a:not(.static):hover {
-  transform: translateX(20px); }
+  transform: translateY(20px); }
 
 nav.tile-nav a.static:hover {
   transform: translateX(0px); }
 
-/* repeat this section for the 8 different colours */
+/* colouring main nav tiles */
 nav.tile-nav li.colour-1,
 nav.tile-nav li.colour-1 a {
   background-color: #FFFFAE; }
@@ -129,6 +150,10 @@ nav.tile-nav li {
     width: 50%;
     float: left; } }
 
+nav.tile-nav li.span-2 {
+  width: 100%;
+  text-align: center; }
+
 @media all and (min-width: 768px) {
   nav.tile-nav li {
     width: 50%; }
@@ -154,6 +179,7 @@ nav.tile-nav li {
     transform: translateY(20px); } }
 
 /* ************************ nav styles - END **************************** */
+/* ************************** buttony ************************** */
 .button {
   background-color: #8FCEAF;
   border-radius: 5px;
@@ -163,3 +189,8 @@ nav.tile-nav li {
     cursor: default; }
   .button:active {
     color: #ffffff; }
+
+/* ************************* do TEST ************************ */
+.answer {
+  padding: 15px;
+  font-size: 120%; }

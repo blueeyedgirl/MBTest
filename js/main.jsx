@@ -4,10 +4,8 @@ import ReactDOM from 'react-dom';
 import MainAbout from './components/mainAbout.jsx';
 import MainNav from './components/mainNav.jsx';
 import MainWelcome from './components/mainWelcome.jsx';
-import TestProgressBar from './components/testProgressBar.jsx';
-import TestQestion from './components/testQestion.jsx';
-import TestAnswer from './components/testAnswer.jsx';
-import TestNav from './components/testNav.jsx';
+import Test from './components/test.jsx';
+
 
 require('../sass/style.scss');
 
@@ -92,19 +90,16 @@ class App extends React.Component {
                     </div>;
         }
         else if (this.state.toDisplay == "about") {
+            return  <div>
+                        oooooooo
+                    </div>;
+        }
+        else if (this.state.toDisplay == "test") {
             if ( !this.state.db ){
                 return <div>bez bazy</div>;
             }
             return  <div>
-                        oooooooo
-                        {/* {this.state.db[0].questionPL} */}
-                    </div>;
-        }
-        else if (this.state.toDisplay == "test") {
-            return  <div>
-                        <TestProgressBar/>
-                        <TestQestion db={this.state.db}/>
-                        <TestNav/>
+                        <Test db={this.state.db}/>
                     </div>;
         }
         else if (this.state.toDisplay == "types") {

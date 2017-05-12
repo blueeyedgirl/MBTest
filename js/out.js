@@ -9708,61 +9708,7 @@ exports.default = MainWelcome;
 ;
 
 /***/ }),
-/* 88 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(14);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(13);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TestAnswer = function (_React$Component) {
-    _inherits(TestAnswer, _React$Component);
-
-    function TestAnswer() {
-        _classCallCheck(this, TestAnswer);
-
-        return _possibleConstructorReturn(this, (TestAnswer.__proto__ || Object.getPrototypeOf(TestAnswer)).apply(this, arguments));
-    }
-
-    _createClass(TestAnswer, [{
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                'answer number x'
-            );
-        }
-    }]);
-
-    return TestAnswer;
-}(_react2.default.Component);
-
-exports.default = TestAnswer;
-;
-
-/***/ }),
+/* 88 */,
 /* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9795,9 +9741,21 @@ var TestNav = function (_React$Component) {
     _inherits(TestNav, _React$Component);
 
     function TestNav() {
+        var _ref;
+
+        var _temp, _this, _ret;
+
         _classCallCheck(this, TestNav);
 
-        return _possibleConstructorReturn(this, (TestNav.__proto__ || Object.getPrototypeOf(TestNav)).apply(this, arguments));
+        for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+        }
+
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = TestNav.__proto__ || Object.getPrototypeOf(TestNav)).call.apply(_ref, [this].concat(args))), _this), _this.handleNextNavCh = function (event) {
+            if (typeof _this.props.onNextChange === "function") {
+                _this.props.onNextChange(event.target.value);
+            }
+        }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(TestNav, [{
@@ -9807,14 +9765,14 @@ var TestNav = function (_React$Component) {
                 'div',
                 { className: 'testNav' },
                 _react2.default.createElement(
-                    'div',
+                    'button',
                     { className: 'button prev' },
-                    'button 1'
+                    'Wr\xF3c'
                 ),
                 _react2.default.createElement(
-                    'div',
-                    { className: 'button next' },
-                    'button 2'
+                    'button',
+                    { className: 'button next', onClick: this.handleNextNavCh, value: Number(this.props.currentQuestion) + 1 },
+                    ' Dalej '
                 )
             );
         }
@@ -9858,13 +9816,33 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var TestProgressBar = function (_React$Component) {
     _inherits(TestProgressBar, _React$Component);
 
-    function TestProgressBar() {
+    function TestProgressBar(props) {
         _classCallCheck(this, TestProgressBar);
 
-        return _possibleConstructorReturn(this, (TestProgressBar.__proto__ || Object.getPrototypeOf(TestProgressBar)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (TestProgressBar.__proto__ || Object.getPrototypeOf(TestProgressBar)).call(this, props));
+
+        _this.refreshStatus = function (p) {
+            var trArray = [];
+            for (var i = 0; i < p.db.length; i++) {
+                if (i < p.currentQuestion) {
+                    trArray.push(_react2.default.createElement('td', { className: 'filled' }));
+                } else trArray.push(_react2.default.createElement('td', null));
+            };
+            _this.setState({ trs: trArray });
+        };
+
+        _this.state = {
+            trs: null
+        };
+        return _this;
     }
 
     _createClass(TestProgressBar, [{
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            this.refreshStatus(nextProps);
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
@@ -9876,15 +9854,7 @@ var TestProgressBar = function (_React$Component) {
                     _react2.default.createElement(
                         'tr',
                         null,
-                        _react2.default.createElement('td', null),
-                        _react2.default.createElement('td', null),
-                        _react2.default.createElement('td', null),
-                        _react2.default.createElement('td', null),
-                        _react2.default.createElement('td', null),
-                        _react2.default.createElement('td', null),
-                        _react2.default.createElement('td', null),
-                        _react2.default.createElement('td', null),
-                        _react2.default.createElement('td', null)
+                        this.state.trs
                     )
                 )
             );
@@ -9926,13 +9896,26 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+{/* <TestQestion
+       db={this.props.db}
+       currentQuestion={this.state.currentQuestion}
+    /> */}
+
 var TestQestion = function (_React$Component) {
     _inherits(TestQestion, _React$Component);
 
-    function TestQestion() {
+    function TestQestion(props) {
         _classCallCheck(this, TestQestion);
 
-        return _possibleConstructorReturn(this, (TestQestion.__proto__ || Object.getPrototypeOf(TestQestion)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (TestQestion.__proto__ || Object.getPrototypeOf(TestQestion)).call(this, props));
+
+        _this.state = {
+            e: 0,
+            s: 0,
+            t: 0,
+            j: 0
+        };
+        return _this;
     }
 
     _createClass(TestQestion, [{
@@ -9940,26 +9923,26 @@ var TestQestion = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'div',
-                null,
+                { className: 'qa' },
                 _react2.default.createElement(
                     'h1',
                     null,
                     ' ',
-                    this.props.db[0].questionPL,
+                    this.props.db[this.props.currentQuestion].questionPL,
+                    ': '
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { className: 'answer' },
+                    ' ',
+                    this.props.db[this.props.currentQuestion].answers[0].answerPL,
                     ' '
                 ),
                 _react2.default.createElement(
                     'div',
                     { className: 'answer' },
                     ' ',
-                    this.props.db[0].answers[0].answerPL,
-                    ' '
-                ),
-                _react2.default.createElement(
-                    'div',
-                    { className: 'answer' },
-                    ' ',
-                    this.props.db[0].answers[1].answerPL,
+                    this.props.db[this.props.currentQuestion].answers[1].answerPL,
                     ' '
                 )
             );
@@ -10008,21 +9991,9 @@ var _mainWelcome = __webpack_require__(87);
 
 var _mainWelcome2 = _interopRequireDefault(_mainWelcome);
 
-var _testProgressBar = __webpack_require__(90);
+var _test = __webpack_require__(203);
 
-var _testProgressBar2 = _interopRequireDefault(_testProgressBar);
-
-var _testQestion = __webpack_require__(91);
-
-var _testQestion2 = _interopRequireDefault(_testQestion);
-
-var _testAnswer = __webpack_require__(88);
-
-var _testAnswer2 = _interopRequireDefault(_testAnswer);
-
-var _testNav = __webpack_require__(89);
-
-var _testNav2 = _interopRequireDefault(_testNav);
+var _test2 = _interopRequireDefault(_test);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -10128,6 +10099,12 @@ var App = function (_React$Component) {
                     _react2.default.createElement(_mainNav2.default, null)
                 );
             } else if (this.state.toDisplay == "about") {
+                return _react2.default.createElement(
+                    'div',
+                    null,
+                    'oooooooo'
+                );
+            } else if (this.state.toDisplay == "test") {
                 if (!this.state.db) {
                     return _react2.default.createElement(
                         'div',
@@ -10138,15 +10115,7 @@ var App = function (_React$Component) {
                 return _react2.default.createElement(
                     'div',
                     null,
-                    'oooooooo'
-                );
-            } else if (this.state.toDisplay == "test") {
-                return _react2.default.createElement(
-                    'div',
-                    null,
-                    _react2.default.createElement(_testProgressBar2.default, null),
-                    _react2.default.createElement(_testQestion2.default, { db: this.state.db }),
-                    _react2.default.createElement(_testNav2.default, null)
+                    _react2.default.createElement(_test2.default, { db: this.state.db })
                 );
             } else if (this.state.toDisplay == "types") {
                 return _react2.default.createElement(
@@ -22669,6 +22638,103 @@ function traverseAllChildren(children, callback, traverseContext) {
 
 module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(14);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(13);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _testProgressBar = __webpack_require__(90);
+
+var _testProgressBar2 = _interopRequireDefault(_testProgressBar);
+
+var _testQestion = __webpack_require__(91);
+
+var _testQestion2 = _interopRequireDefault(_testQestion);
+
+var _testNav = __webpack_require__(89);
+
+var _testNav2 = _interopRequireDefault(_testNav);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Test = function (_React$Component) {
+    _inherits(Test, _React$Component);
+
+    function Test(props) {
+        _classCallCheck(this, Test);
+
+        var _this = _possibleConstructorReturn(this, (Test.__proto__ || Object.getPrototypeOf(Test)).call(this, props));
+
+        _this.handleNextChange = function (currentQuestion) {
+            _this.setState({ currentQuestion: currentQuestion });
+            console.log(currentQuestion);
+            var newNext = Number(currentQuestion) + 1;
+            _this.setState({ nextQuestion: newNext });
+            console.log(newNext);
+        };
+
+        _this.state = {
+            currentQuestion: 0,
+            isPrevClicked: false
+        };
+        return _this;
+    }
+
+    _createClass(Test, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { className: 'test' },
+                _react2.default.createElement(_testProgressBar2.default, {
+                    db: this.props.db,
+                    currentQuestion: this.state.currentQuestion
+                }),
+                _react2.default.createElement(_testQestion2.default, {
+                    db: this.props.db,
+                    currentQuestion: this.state.currentQuestion
+                }),
+                _react2.default.createElement(_testNav2.default, {
+                    onNextChange: this.handleNextChange,
+                    currentQuestion: this.state.currentQuestion
+                })
+            );
+        }
+    }]);
+
+    return Test;
+}(_react2.default.Component);
+
+exports.default = Test;
+;
 
 /***/ })
 /******/ ]);

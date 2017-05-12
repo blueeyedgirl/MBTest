@@ -1,6 +1,9 @@
+// fonts
+
 * {
     font-family: 'Lato', sans-serif;
 }
+
 
 /* ************************* body flex ************************** */
 body.flex {
@@ -12,6 +15,7 @@ body.flex {
     flex-direction: column;
     align-content: space-between;
     header {
+        height: 15vh;
         margin: 0;
         padding: 0;
         background-color: #F3F3F3;
@@ -29,7 +33,7 @@ body.flex {
         display: flex;
         align-items: center;
         justify-content: center;
-        display: flex;
+        height: 80vh;
         width: 100%;
         background-color: #F3F3F3;
         div {
@@ -37,10 +41,49 @@ body.flex {
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            div.test {
+                width: 60vw;
+                table.progress-bar {
+                    padding: 0;
+                    width: 100%;
+                    tr {
+                        td {
+                            height: 10px;
+                            background-color: lighten(#60AFAC, 30%);
+                            .filled {
+                                background-color: darken(#60AFAC, 20%);
+                            }
+                        }
+                    }
+                }
+                div.qa {
+                    width: 100%;
+                    padding-top: 40px;
+                }
+                div.testNav {
+                    width: 100%;
+                    flex-wrap: nowrap;
+                    justify-content: space-between;
+                    flex-direction: row;
+                    padding-top: 40px;
+                    .button {
+                        display: flex;
+                        padding: 10px 20px;
+                        border: none;
+                        &.prev {
+                            align-self: flex-start;
+                        }
+                        &.next {
+                            align-self: flex-end;
+                        }
+                    }
+                }
+            }
+
         }
     }
     footer {
-        height: 40px;
+        height: 5vh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -50,16 +93,6 @@ body.flex {
 
 /* ****************** progress bar ******************* */
 
-.progress-bar {
-    padding: 0;
-    tr {
-        td {
-            width: 50px;
-            height: 10px;
-            background-color: red;
-        }
-    }
-}
 
 /* ************************** nav styles ****************************** */
 
@@ -95,14 +128,14 @@ nav.tile-nav a {
 }
 
 nav.tile-nav a:not(.static):hover {
-    transform: translateX(20px);
+    transform: translateY(20px);
 }
 
 nav.tile-nav a.static:hover {
     transform: translateX(0px);
 }
 
-/* repeat this section for the 8 different colours */
+/* colouring main nav tiles */
 
 nav.tile-nav li.colour-1,
 nav.tile-nav li.colour-1 a {
@@ -184,6 +217,13 @@ nav.tile-nav li {
     }
 }
 
+    nav.tile-nav li.span-2 {
+        // overflow: visible;
+        // width: 25%;
+        width: 100%;
+        text-align: center;
+    }
+
 @media all and (min-width: 768px) {
     nav.tile-nav li {
         // width: 25%;
@@ -229,6 +269,8 @@ nav.tile-nav li {
 
 /* ************************ nav styles - END **************************** */
 
+/* ************************** buttony ************************** */
+
 .button {
     background-color: #8FCEAF;
     border-radius: 5px;
@@ -242,5 +284,9 @@ nav.tile-nav li {
     }
 }
 
-.start {
+/* ************************* do TEST ************************ */
+
+.answer {
+    padding: 15px;
+    font-size: 120%;
 }
